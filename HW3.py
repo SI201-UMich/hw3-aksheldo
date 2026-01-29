@@ -113,14 +113,16 @@ class CouponDispenser:
                 break
             elif inp == "show":
                for i in range(len(self.customer_roster)):
-                   print(self.customer_roster[i] + ": " + self.coupon_cards(self.issued_indices[i]))
+                   print(self.customer_roster[i] + ": " + self.coupon_cards[self.issued_indices[i]])
                    print() 
             else:
                pieces = inp.split(",")
                for piece in pieces:
-                   piece.strip()   
-               for piece in pieces:
-                   print(self.issue_coupon(piece))
+                   stripped_text = piece.strip()
+                   if stripped_text == "":
+                       continue
+                   print(self.issue_coupon(stripped_text))  
+            round += 1   
 
 
     def tally_distribution(self):
