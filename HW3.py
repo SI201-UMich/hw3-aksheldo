@@ -46,7 +46,12 @@ class CouponDispenser:
             str
         """
         # TODO: Implement per instructions
-        pass
+        coupons = ""
+        for i in range(len(self.coupon_cards)):
+            coupons += self.coupon_cards[i]
+            if i != len(self.coupon_cards) - 1:
+                coupons += "|"
+
 
     def issue_coupon(self, name):
         """
@@ -118,7 +123,7 @@ def main():
     ]
 
     # Uncomment the lines below as you implement each function.
-    # box = CouponDispenser(coupon_cards)
+    box = CouponDispenser(coupon_cards)
     # box.distribute_session()
     # box.tally_distribution()
     pass
