@@ -51,7 +51,7 @@ class CouponDispenser:
             coupons += self.coupon_cards[i]
             if i != len(self.coupon_cards) - 1:
                 coupons += "|"
-
+        return coupons
 
     def issue_coupon(self, name):
         """
@@ -74,17 +74,15 @@ class CouponDispenser:
             return "The box is empty."
         
         # if name already exists in customer roster
-        if name in self.customer_roster == True:
+        if name in self.customer_roster:
             index = 0
             for i in range(len(self.customer_roster)):
                 if name == self.customer_roster[i]:
                     index = i
-            # sets coupon to the exisiting coupon assigned to customer        
+            # sets coupon to the existing coupon assigned to customer        
             coupon = self.coupon_cards[self.issued_indices[index]]
             return "That name already has a coupon: " + coupon
-        
-        # if name is new
-        if name in self.customer_roster == False:
+        else:
             index = random.randint(0, len(self.coupon_cards) - 1)
             self.customer_roster.append(name)
             self.issued_indices.append(index)
@@ -108,7 +106,7 @@ class CouponDispenser:
         # TODO: Implement per instructions 
         round = 1
         while (True):
-            message = "Round " + str(round) + " - Enter a name (or a comma-separated list), or type 'show' or 'exit':"
+            message = "Round " + str(round) + " - Enter a name (or a comma-separated list), or type 'show' or 'exit': "
             inp = input(message)
             if inp == "exit":
                 print("Goodbye!")
@@ -173,7 +171,6 @@ def main():
     box = CouponDispenser(coupon_cards)
     box.distribute_session()
     box.tally_distribution()
-    pass
 
 
 # -----------------------
@@ -453,5 +450,5 @@ def test():
 
 if __name__ == "__main__":
     main()
-    # test()
+    test()
 
