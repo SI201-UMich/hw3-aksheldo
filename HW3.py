@@ -1,12 +1,15 @@
 # Name: Avary Sheldon
 # Student ID: 0521 3113
 # Email: aksheldo@umich.edu
-# Who or what you worked with on this homework (including generative AI like ChatGPT): n/a
+# Who or what you worked with on this homework (including generative AI like ChatGPT): ChatGPT
 # If you worked with generative AI also add a statement for how you used it.
 # e.g.:
 # Asked ChatGPT hints for debugging and suggesting the general structure of the code
+# AI statement: asked ChatGPT for hints debugging distribute_session
 # Did your use of GenAI on this assignment align with your goals and guidelines in 
 #    your Gen AI contract? If not, why?
+# Contract alignment: My use of GenAI did align with my goals in my contract,
+#                       because I used it to help debug my code only after I had tried myself.
 
 import random
 import io
@@ -114,7 +117,6 @@ class CouponDispenser:
             elif inp == "show":
                for i in range(len(self.customer_roster)):
                    print(self.customer_roster[i] + ": " + self.coupon_cards[self.issued_indices[i]])
-                   print() 
             else:
                pieces = inp.split(",")
                for piece in pieces:
@@ -150,18 +152,12 @@ class CouponDispenser:
                 for index in self.issued_indices:
                     if index == i:
                         count += 1
-                print(self.coupon_cards[i] + "distribution count: " + str(count) + ".") 
+                print(self.coupon_cards[i] + " distribution count: " + str(count) + ".") 
             return
 
 
 def main():
-    """
-    Driver function:
-      - Define the coupon_cards list (example coupons below)
-      - Create a CouponDispenser
-      - Start the interaction via distribute_session()
-      - After exit, call tally_distribution() to print the distribution in the terminal
-    """
+   
     coupon_cards = [
         "10% off",
         "Free small coffee",
